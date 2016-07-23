@@ -1,8 +1,8 @@
 package nemo9955;
 
 public class Act {
-	public static final String get = "get";
-	public static final String creaza = "create";
-	public static final String insere = "insert";
-	public static final String afisea = "fiseaza";
+	public static final String CONECTEAZA = "conecteaza / creaza BD";
+	public static final String ADAUDA_ALEATOR = "adauga element aleator";
+	public static final String AFISEAZA_TOT = "printeaza intreaga BD";
+	public static final String STERGE_TOT = "goleste baza de date";
 }

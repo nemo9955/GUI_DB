@@ -21,9 +21,10 @@ public class MainGUI extends JFrame implements KeyListener, ActionListener {
 
 		addKeyListener(this);
 
-		add(makeButton("Connect to the DB", Act.creaza));
-		add(makeButton("Arata facturi", Act.afisea));
-		add(makeButton("Inserare Factura", Act.insere));
+		add(makeButton("Connect to the DB", Act.CONECTEAZA));
+		add(makeButton("Arata facturi", Act.AFISEAZA_TOT));
+		add(makeButton("Inserare Factura", Act.ADAUDA_ALEATOR));
+		add(makeButton("Goleste DB", Act.STERGE_TOT));
 
 	}
 
@@ -51,14 +52,17 @@ public class MainGUI extends JFrame implements KeyListener, ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 
 		switch (arg0.getActionCommand()) {
-		case Act.creaza:
-			FacturaDB.createTable();
+		case Act.CONECTEAZA:
+			Main.fdb.createTable();
 			break;
-		case Act.afisea:
-			
+		case Act.AFISEAZA_TOT:
+			Main.fdb.displayAll();
 			break;
-		case Act.insere:
-			FacturaDB.insert(Factura.getRandomNewFactura());
+		case Act.ADAUDA_ALEATOR:
+			Main.fdb.insertFactura(Factura.getRandomNewFactura());
+			break;
+		case Act.STERGE_TOT:
+			Main.fdb.dropTable();
 			break;
 
 		default:

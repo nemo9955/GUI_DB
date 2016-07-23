@@ -10,7 +10,7 @@ import java.util.Random;
 public class Factura {
 	private long id;
 	private int nrFactura;
-	private String Furnizor;
+	private String furnizor;
 	private String client;
 	private double suma;
 	private Date data;
@@ -21,7 +21,7 @@ public class Factura {
 		super();
 		this.id = id;
 		this.nrFactura = nrFactura;
-		Furnizor = furnizor;
+		this.furnizor = furnizor;
 		this.client = client;
 		this.suma = suma;
 		this.data = data;
@@ -29,7 +29,7 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", nrFactura=" + nrFactura + ", Furnizor=" + Furnizor + ", client=" + client
+		return "Factura [id=" + id + ", nrFactura=" + nrFactura + ", Furnizor=" + furnizor + ", client=" + client
 				+ ", suma=" + suma + ", data=" + data + "]";
 	}
 
@@ -50,11 +50,11 @@ public class Factura {
 	}
 
 	public String getFurnizor() {
-		return Furnizor;
+		return furnizor;
 	}
 
 	public void setFurnizor(String furnizor) {
-		Furnizor = furnizor;
+		this.furnizor = furnizor;
 	}
 
 	public String getClient() {
