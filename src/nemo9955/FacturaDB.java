@@ -9,8 +9,10 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 
 public class FacturaDB {
+	
+	
 	public void createTable() {
-		Connection conn = DBUtil.getConnection();
+		Connection conn = Main.dbu.getConnection();
 
 		boolean tableExists = false;
 		try {
@@ -50,7 +52,7 @@ public class FacturaDB {
 	}
 
 	public void insertFactura(Factura f) {
-		Connection conn = DBUtil.getConnection();
+		Connection conn = Main.dbu.getConnection();
 		try {
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO " //
 					+ "factura(nrFactura,client,furnizor,suma,data)VALUES(?,?,?,?,?)");
@@ -68,20 +70,23 @@ public class FacturaDB {
 
 	public void displayAll() {
 		try {
-			Connection connect = DBUtil.getConnection();
+			Connection connect = Main.dbu.getConnection();
 			PreparedStatement statement = connect.prepareStatement("SELECT * from factura");
 
 			ResultSet resultSet = statement.executeQuery();
-			while (resultSet.next()) {
-				
-				System.out.println("Nr factura: " + resultSet.getString("nrFactura"));
-				System.out.println("Client: " + resultSet.getString("client"));
-				System.out.println("Furnizor: " + resultSet.getString("furnizor"));
-				System.out.println("Suma: " + resultSet.getString("suma"));
-				System.out.println("Data: " + resultSet.getString("data"));
-				System.out.println();
-				
-			}
+			
+			System.out.println(Main.dbu.printResult(resultSet));
+			
+//			while (resultSet.next()) {
+//				
+//				System.out.println("Nr factura: " + resultSet.getString("nrFactura"));
+//				System.out.println("Client: " + resultSet.getString("client"));
+//				System.out.println("Furnizor: " + resultSet.getString("furnizor"));
+//				System.out.println("Suma: " + resultSet.getString("suma"));
+//				System.out.println("Data: " + resultSet.getString("data"));
+//				System.out.println();
+//				
+//			}
 		} catch (
 
 		Exception e) {
@@ -91,7 +96,7 @@ public class FacturaDB {
 
 	public void dropTable() {
 		try {
-			Connection connect = DBUtil.getConnection();
+			Connection connect = Main.dbu.getConnection();
 			PreparedStatement statement = connect.prepareStatement("DROP TABLE factura");
 
 			statement.executeUpdate();
