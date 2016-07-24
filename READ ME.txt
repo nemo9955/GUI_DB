@@ -7,7 +7,7 @@ Installation:
 
 3. run in cmd/terminal "*derby_folder*/bin/startNetworkServer" to start the Derby DataBase
 
-4. once the derby server is up and running, either execute .jar or run Main.java
+4. once the derby server is up and running, either execute the startDBMaster42.jar or run Main.java
 
 
 GUI:
