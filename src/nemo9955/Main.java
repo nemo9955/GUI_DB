@@ -2,13 +2,16 @@ package nemo9955;
 
 public class Main {
 
-	public static FacturaDB fdb = new FacturaDB();
+	public static FacturaDB fdb;
 
-	public static DBUtil dbu = new DBUtil();
+	public static MainGUI gui;
+
+	public static DBUtil dbu;
 
 	public static void main(String[] args) {
-
-		MainGUI gui = new MainGUI();
+		fdb = new FacturaDB();
+		gui = new MainGUI();
+		dbu = new DBUtil();
 
 	}
 

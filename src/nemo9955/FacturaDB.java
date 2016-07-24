@@ -38,8 +38,9 @@ public class FacturaDB {
 						+ "nrFactura INTEGER, "//
 						+ "client VARCHAR(20), "//
 						+ "furnizor VARCHAR(20), "//
-						+ "suma DOUBLE, data DATE, "//
-						+ "CONSTRAINT primary_key_2 PRIMARY KEY (ID))");
+						+ "suma DOUBLE, "//
+						+ "data DATE, "//
+						+ "CONSTRAINT primary_key_2 PRIMARY KEY (ID))");//
 
 				conn.commit();
 
@@ -67,32 +68,6 @@ public class FacturaDB {
 		}
 	}
 
-
-	public void displayAll() {
-		try {
-			Connection connect = Main.dbu.getConnection();
-			PreparedStatement statement = connect.prepareStatement("SELECT * from factura");
-
-			ResultSet resultSet = statement.executeQuery();
-			
-			System.out.println(Main.dbu.printResult(resultSet));
-			
-//			while (resultSet.next()) {
-//				
-//				System.out.println("Nr factura: " + resultSet.getString("nrFactura"));
-//				System.out.println("Client: " + resultSet.getString("client"));
-//				System.out.println("Furnizor: " + resultSet.getString("furnizor"));
-//				System.out.println("Suma: " + resultSet.getString("suma"));
-//				System.out.println("Data: " + resultSet.getString("data"));
-//				System.out.println();
-//				
-//			}
-		} catch (
-
-		Exception e) {
-			 e.printStackTrace();
-		} 
-	}
 
 	public void dropTable() {
 		try {

@@ -1,7 +1,0 @@
-http://www.oracle.com/technetwork/database/database-technologies/express-edition/downloads/index.html - express edition download
-
-http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html - sql dev tools
-
-http://127.0.0.1:8080/apex/f?p=4950:1:1982111336322195::NO - localhost
-
-http://docs.oracle.com/cd/E17781_01/admin.112/e18585/toc.htm#XEGSG111 - docs

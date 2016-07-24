@@ -1,0 +1,7 @@
+https://db.apache.org/derby/releases/release-10.12.1.1.cgi - download Derby 10.12 (latest)
+
+extraxt zip contents
+
+run in cmd window "*derby_folder*/bin/startNetworkServer"
+
+once the derby server is up and running, either execute .jar or run Main.java
