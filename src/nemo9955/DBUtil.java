@@ -1,7 +1,10 @@
 package nemo9955;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -11,6 +14,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import org.apache.derby.iapi.services.io.ArrayUtil;
 
 import nemo9955.Act.ComandResult;
 
@@ -29,7 +35,29 @@ public class DBUtil {
 	}
 
 	public void imporFromCSV() {
-		// TODO Auto-generated method stub
+		BufferedReader dataBR;
+		try {
+			dataBR = new BufferedReader(new FileReader(new File("import.csv")));
+			String line = "";
+			line = dataBR.readLine();
+			String cols[] = line.split(",");
+			int noCols = cols.length;
+
+			while ((line = dataBR.readLine()) != null) {
+
+				cols = line.split(",");
+				for (int i = 0; i < noCols; i++) {
+
+					cols[i] = cols[i].trim().substring(1, cols[i].length() - 1).trim();
+				}
+
+				Main.fdb.insertFactura(Factura.getInstanceFromStringArray(cols));
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

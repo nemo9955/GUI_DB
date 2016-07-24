@@ -48,15 +48,16 @@ public class MainGUI extends JFrame implements ActionListener {
 	private void addElements() {
 		int but = 0;
 		addGBElement(makeButton("RUN", Act.RUN_COMMAND), 0, but++);
-		addGBElement(makeButton("RUN TO CSV", Act.EXPORT_TO_CSV), 0, but++);
-		addGBElement(makeButton("Create the DB", Act.CREEAZA), 0, but++);
-		addGBElement(makeButton("Arata facturi", Act.AFISEAZA_TOT), 0, but++);
-		addGBElement(makeButton("Inserare Factura", Act.ADAUDA_ALEATOR), 0, but++);
-		addGBElement(makeButton("Goleste DB", Act.STERGE_TOT), 0, but++);
-		addGBElement(makeButton("Lis DB", Act.LIST_DATABASE), 0, but++);
+		addGBElement(makeButton("RUN to CSV", Act.EXPORT_TO_CSV), 0, but++);
+		addGBElement(makeButton("Create the Table", Act.CREEAZA), 0, but++);
+		addGBElement(makeButton("Show facturi", Act.AFISEAZA_TOT), 0, but++);
+		addGBElement(makeButton("Add to Factura", Act.ADAUDA_ALEATOR), 0, but++);
+		addGBElement(makeButton("Delete FACTURA", Act.STERGE_TOT), 0, but++);
+		addGBElement(makeButton("List DB", Act.LIST_DATABASE), 0, but++);
 		addGBElement(makeButton("List Tables", Act.LIST_TABLES), 0, but++);
+		addGBElement(makeButton("Import Data", Act.IMPORT_AND_ADD_CSV), 0, but++);
 
-		inputArea = new JTextArea("", 300, 40);
+		inputArea = new JTextArea("SELECT * FROM FACTURA", 300, 40);
 		inputArea.setFont(new Font("monospaced", Font.PLAIN, 12));
 		JScrollPane scrollInPane = new JScrollPane(inputArea);
 
@@ -142,6 +143,9 @@ public class MainGUI extends JFrame implements ActionListener {
 			Main.dbu.runCommand(inputArea.getText(), Act.ComandResult.TO_CSV);
 			System.out.println(inputArea.getText());
 			inputArea.setText("");
+			break;
+		case Act.IMPORT_AND_ADD_CSV:
+			Main.dbu.imporFromCSV();
 			break;
 
 		default:

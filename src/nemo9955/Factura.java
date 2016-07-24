@@ -1,6 +1,5 @@
 package nemo9955;
 
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,7 +7,6 @@ import java.util.Date;
 import java.util.Random;
 
 public class Factura {
-	private long id;
 	private int nrFactura;
 	private String furnizor;
 	private String client;
@@ -17,9 +15,8 @@ public class Factura {
 
 	static DateFormat df = new SimpleDateFormat("dd-mm-yyyy");
 
-	public Factura(long id, int nrFactura, String furnizor, String client, double suma, Date data) {
+	public Factura(int nrFactura, String furnizor, String client, double suma, Date data) {
 		super();
-		this.id = id;
 		this.nrFactura = nrFactura;
 		this.furnizor = furnizor;
 		this.client = client;
@@ -29,16 +26,8 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", nrFactura=" + nrFactura + ", Furnizor=" + furnizor + ", client=" + client
-				+ ", suma=" + suma + ", data=" + data + "]";
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		return "Factura [nrFactura=" + nrFactura + ", Furnizor=" + furnizor + ", client=" + client + ", suma=" + suma
+				+ ", data=" + data + "]";
 	}
 
 	public int getNrFactura() {
@@ -81,12 +70,45 @@ public class Factura {
 		this.data = data;
 	}
 
+	/**
+	 * 
+	 * int nrFactura;
+	 * 
+	 * String furnizor;
+	 * 
+	 * String client;
+	 * 
+	 * double suma;
+	 * 
+	 * Date data;
+	 * 
+	 * @param arr
+	 * @return
+	 */
+	public static Factura getInstanceFromStringArray(String[] arr) {
+
+		int start = 1;
+
+		int nrFactura = Integer.parseInt(arr[start++]);
+		String client = arr[start++];
+		String furnizor = arr[start++];
+		Date data = null;
+		double suma = Double.parseDouble(arr[start++]);
+		try {
+			data = df.parse(arr[start++]);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		Factura f = new Factura(nrFactura, furnizor, client, suma, data);
+		return f;
+	}
+
 	public static Factura getRandomNewFactura() {
 		Factura f = null;
 		Random r = new Random();
 		try {
-			f = new Factura(r.nextInt(100), r.nextInt(100) + 100, "ceva " + r.nextInt(10), "eu " + r.nextInt(10),
-					r.nextInt(100) + 300,
+			f = new Factura(r.nextInt(100) + 100, "ceva " + r.nextInt(10), "eu " + r.nextInt(10), r.nextInt(100) + 300,
 					df.parse(String.format("%d-%d-%d", r.nextInt(100), r.nextInt(100), 1000 + r.nextInt(2000))));
 		} catch (ParseException e) {
 			e.printStackTrace();
